@@ -6,7 +6,7 @@ const Bg = styled.div`
     background-color: #D9D9D9;
     color: #222;
     padding: 50px 20px;
-    margin: 0px 20px 0px 20px;
+    margin: 65px 20px;
     height: 450px;
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@ const Bg = styled.div`
 
 const Title = styled.h1`
     font-weight: bold;
-    font-size: 2.8rem;
+    font-size: 2.9rem;
     margin: 0;
 `;
 
@@ -22,13 +22,16 @@ const Subtitle = styled.h2`
     font-size: 1.5rem;
     font-weight: 600;
     color: #000;
-    margin-top: 10px;
+    margin-top: 20px;
+
 `;
 
 const Desc = styled.p`
     color: #333;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-top: 10px;
+    line-height: 2.0;
+
 `;
 
 const ColumnsWrapper = styled.div`
@@ -42,38 +45,55 @@ const Column = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: start;
+    text-align: start;
 `;
 
 const ButtonsWrapper = styled.div`
     display: flex;
     gap: 15px;
     margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+`;
+
+const StyledButtonLink = styled(ButtonLink)`
+    background-color: #FF8A2A;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    &:hover {
+        background-color:rgb(255, 115, 0);
+        transform: scale(1.05);
+        color: #fff;
+    }
 `;
 
 const ImageWrapper = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
     align-items: center;
     width: 100%;
-    max-width: 550px;
+    max-width: 1000px;
 `;
 
 const Image1 = styled.img`
     width: 100%;
     height: auto;
     border-radius: 10px;
-    
 `;
 
 const Image2 = styled.img`
-    width: 80%;
+    width: 90%;
     height: auto;
     position: absolute;
-    top: 20px;
-    right: -30px;
+    top: 10px;
+    right: -70px;
     border-radius: 10px;
-    
 `;
 
 export default function Featured() {
@@ -89,22 +109,20 @@ export default function Featured() {
                             traditional business cards are a thing of the past. Elevate your networking game effortlessly.
                         </Desc>
                         <ButtonsWrapper>
-                            <ButtonLink href="/products" style={{ backgroundColor: "#ff7a00", color: "#fff", padding: "10px 20px", borderRadius: "5px" }}>
-                                Shop Now
-                            </ButtonLink>
-                            <ButtonLink href="/about" style={{ backgroundColor: "#ff7a00", color: "#fff", padding: "10px 20px", borderRadius: "5px" }}>
-                                Send Inquiry
-                            </ButtonLink>
+                            <StyledButtonLink href="/products">Shop Now</StyledButtonLink>
+                            <StyledButtonLink href="/about">Send Inquiry</StyledButtonLink>
                         </ButtonsWrapper>
                     </Column>
                     <Column>
                         <ImageWrapper>
-                            <Image1 src="/image/Group_37.svg" alt="Business Card 1" />
-                            <Image2 src="/image/Card_2.png" alt="Business Card 2" />
+                            <Image2 src="/image/Group_37.svg" alt="Business Card 1" />
+                            <Image1 src="/image/Card2.png" alt="Business Card 2" />
                         </ImageWrapper>
                     </Column>
                 </ColumnsWrapper>
             </Center>
+            
         </Bg>
+        
     );
 }

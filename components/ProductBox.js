@@ -9,9 +9,9 @@ const ProductWrapper = styled.div`
 `;
 
 const WhiteBox = styled(Link)`
-    background-color: #fff;
+    background-color: #FEE566;
     padding: 20px;
-    height: 190px;
+    height: 250px;
     text-align: center;
     display: flex;
     align-items: center;

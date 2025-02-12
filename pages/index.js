@@ -4,9 +4,8 @@ import Header from "@/components/Header";
 import NewProducts from "@/components/NewProducts";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
-import { getSession, useSession, signOut } from 'next-auth/react';
-import Link from "next/link";
-import { useState } from "react";
+import FeaturesSection from "@/components/Setup";
+import ProductsSlider from "@/components/NewProductsGrid";
 
 export default function HomePage({featuredProduct, newProducts}){
   // const {data:session} = useSession();
@@ -19,6 +18,7 @@ export default function HomePage({featuredProduct, newProducts}){
     <div>
       <Header />
       <Featured product={featuredProduct}/>
+      <FeaturesSection />
       <NewProducts products={newProducts}/>
       <Footer />
     </div>

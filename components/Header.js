@@ -1,13 +1,19 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { CartContext } from "./CartContext";
 import { FiShoppingCart } from "react-icons/fi";
 
 const StyledHeader = styled.header`
-    background-color: #ffff;
+    background-color: #fff;
     padding: 10px 0;
-    border-bottom: 2px solid #ffff;
+    border-bottom: 2px solid #fff;
+    position: fixed;
+    width: 100%;
+    top: ${({ isVisible }) => (isVisible ? "0" : "-80px")};
+    transition: top 0.3s ease-in-out;
+    z-index: 1000;
 `;
 
 const StyledDiv = styled.div`
@@ -58,26 +64,33 @@ const StyledNav = styled.nav`
 const RightNav = styled.div`
     display: flex;
     margin-bottom: -17px;
-    gap: 20px;
+    gap: 25px;
     align-items: center;
 `;
 
 const NavLink = styled(Link)`
-    color: black;
+    color: ${({ active }) => (active ? "#FF8A2A" : "black")};
     text-decoration: none;
     font-weight: 500;
     position: relative;
     padding-bottom: 5px;
-    &:hover {
-        color: #FF8A2A;
-    }
-    &:hover::after {
+
+    &::after {
         content: "";
         position: absolute;
         left: 0;
         bottom: -3px;
-        width: 100%;
+        width: ${({ active }) => (active ? "100%" : "0")};
         height: 3px;
+        background-color: ${({ active }) => (active ? "#FF8A2A" : "transparent")};
+        transition: width 0.3s ease-in-out;
+    }
+
+    &:hover {
+        color: #FF8A2A;
+    }
+    &:hover::after {
+        width: 100%;
         background-color: #FF8A2A;
     }
 `;
@@ -109,37 +122,65 @@ const CreateAccountButton = styled(Link)`
     border-radius: 5px;
     text-decoration: none;
     font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     &:hover {
-        background-color:rgb(255, 115, 0);
+        background-color: rgb(255, 115, 0);
+        transform: scale(1.05);
     }
 `;
 
 export default function Header() {
     const { cartProducts } = useContext(CartContext);
+    const router = useRouter();
+
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY < lastScrollY || window.scrollY < 50) {
+                setIsVisible(true); // Show header when scrolling up or at top
+            } else {
+                setIsVisible(false); // Hide when scrolling down
+            }
+            setLastScrollY(window.scrollY);
+        };
+
+        const handleMouseMove = (e) => {
+            if (e.clientY < 80) setIsVisible(true); // Show header when mouse is at top
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("mousemove", handleMouseMove);
+        };
+    }, [lastScrollY]);
 
     return (
-        <StyledHeader>
+        <StyledHeader isVisible={isVisible}>
             <StyledDiv>
-                <Logo href={'/'}>
+                <Logo href={"/"}>
                     <img src="/image/final.svg" alt="Tap Tap Logo" />
                     <Gyen>Tap Tap</Gyen>
                 </Logo>
-                
+
                 <NavContainer>
                     <StyledNav>
-                        <NavLink href={'/'}>Home</NavLink>
-                        <NavLink href={'/products'}>Shop</NavLink>
-                        <NavLink href={'/compatible'}>Compatible Phones</NavLink>
-                        <NavLink href={'/about'}>About Tap Tap</NavLink>
-                        
+                        <NavLink href={"/"} active={router.pathname === "/"}>Home</NavLink>
+                        <NavLink href={"/products"} active={router.pathname === "/products"}>Shop</NavLink>
+                        <NavLink href={"/compatible"} active={router.pathname === "/compatible"}>Compatible Phones</NavLink>
+                        <NavLink href={"/about"} active={router.pathname === "/about"}>About Tap Tap</NavLink>
                     </StyledNav>
                     <RightNav>
-                        <CartButton href={'/cart'}>
+                        <CartButton href={"/cart"}>
                             <FiShoppingCart />
                             {cartProducts.length > 0 && <span>{cartProducts.length}</span>}
                         </CartButton>
-                        <NavLink href={'/signin'}>Sign in</NavLink>
-                        <CreateAccountButton href={'/signin'}>Create Free Account</CreateAccountButton>
+                        <NavLink href={"/signin"} active={router.pathname === "/signin"}>Sign in</NavLink>
+                        <CreateAccountButton href={"/signin"}>Create Free Account</CreateAccountButton>
                     </RightNav>
                 </NavContainer>
             </StyledDiv>
