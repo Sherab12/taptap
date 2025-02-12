@@ -1,99 +1,148 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Center from "./Center";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import BarsIcon from "./icons/Bars";
+import { FiShoppingCart } from "react-icons/fi";
 
 const StyledHeader = styled.header`
-    background-color:  #e3e6f3;
+    background-color: #ffff;
+    padding: 10px 0;
+    border-bottom: 2px solid #ffff;
 `;
-const Logo = styled(Link)`
-    color:black;
-    font-weight: 500;
-    text-decoration:none;
-    position: relative;
-    z-index: 3;
-    display: inline-flex;
-    flex-direction: row;
-    height: 40px;
-    img{
-        margin-top: 0px;
-        height: 40px;
-        width: 40px;
-    }
-`;
-const Wrapper = styled.div`
+
+const StyledDiv = styled.div`
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 27px;
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    align-items: center;
 `;
-const StyledNav = styled.nav`
-    ${props => props.mobileNavActive? `display:block;`:`display:none;`}
-    display: block;
-    gap: 15px;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 70px 20px 20px;
-    background-color:  #e3e6f3;
-    margin-top: 10px;
-    @media screen and (min-width: 768px){
-        display: flex;
-        position: static;
-        padding: 0;
+
+const Logo = styled(Link)`
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    img {
+        height: 40px;
+        width: 40px;
+        margin-right: -5px;
+        margin-left: -10px;
     }
+`;
+
+const Gyen = styled.p`
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: black;
+    width: 70px;
+    margin-top: 27px;
+    margin-right: 20px;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+`;
+
+const NavContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`;
+
+const StyledNav = styled.nav`
+    display: flex;
+    margin-top: 17px;
+    margin-left: -25px;
+    gap: 20px;
+`;
+
+const RightNav = styled.div`
+    display: flex;
+    margin-bottom: -17px;
+    gap: 20px;
+    align-items: center;
 `;
 
 const NavLink = styled(Link)`
-    display: block;
-    color:black;
-    text-decoration:none;
-    padding: 10px 0;
-    @media screen and (min-width: 768px){
-        padding: 0;
-    }
-`;
-const Gyen = styled.p`
-    margin-left: 10px;
-    margin-top: 10px;
-`;
-const NavButton = styled.button`
-    background-color: transparent;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    color: white;
-    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
     position: relative;
-    z-index: 3;
-    @media screen and (min-width: 768px){
-        display: none;
+    padding-bottom: 5px;
+    &:hover {
+        color: #FF8A2A;
+    }
+    &:hover::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 100%;
+        height: 3px;
+        background-color: #FF8A2A;
     }
 `;
-export default function Header(){
-    const {cartProducts} = useContext(CartContext);
-    const [mobileNavActive,setMobileNavActive] = useState(false);
-    return(
+
+const CartButton = styled(Link)`
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+
+    span {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        font-size: 12px;
+        padding: 3px 6px;
+    }
+`;
+
+const CreateAccountButton = styled(Link)`
+    background-color: #FF8A2A;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    &:hover {
+        background-color:rgb(255, 115, 0);
+    }
+`;
+
+export default function Header() {
+    const { cartProducts } = useContext(CartContext);
+
+    return (
         <StyledHeader>
-            <Center>
-                <Wrapper>
-                    <Logo href={'/'}><img src="/image/Gyencha.png"/><Gyen>Gyencha</Gyen></Logo>
-                    <StyledNav mobileNavActive={mobileNavActive}>
+            <StyledDiv>
+                <Logo href={'/'}>
+                    <img src="/image/final.svg" alt="Tap Tap Logo" />
+                    <Gyen>Tap Tap</Gyen>
+                </Logo>
+                
+                <NavContainer>
+                    <StyledNav>
                         <NavLink href={'/'}>Home</NavLink>
-                        <NavLink href={'/products'}>All products</NavLink>
-                        {/* <NavLink href={'/about'}>About Us</NavLink> */}
-                        <NavLink href={'/about'}>Contact Us</NavLink>
-                        <NavLink href={'/cart'}>Cart ({cartProducts.length})</NavLink>
-                        <NavLink href={'/login'}>Sign Up</NavLink>
+                        <NavLink href={'/products'}>Shop</NavLink>
+                        <NavLink href={'/compatible'}>Compatible Phones</NavLink>
+                        <NavLink href={'/about'}>About Tap Tap</NavLink>
+                        
                     </StyledNav>
-                    <NavButton onClick={() => setMobileNavActive(prev => !prev)}>
-                        <BarsIcon />
-                    </NavButton>
-                </Wrapper>
-            </Center>
+                    <RightNav>
+                        <CartButton href={'/cart'}>
+                            <FiShoppingCart />
+                            {cartProducts.length > 0 && <span>{cartProducts.length}</span>}
+                        </CartButton>
+                        <NavLink href={'/signin'}>Sign in</NavLink>
+                        <CreateAccountButton href={'/signin'}>Create Free Account</CreateAccountButton>
+                    </RightNav>
+                </NavContainer>
+            </StyledDiv>
         </StyledHeader>
     );
 }

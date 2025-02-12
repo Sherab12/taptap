@@ -1,76 +1,107 @@
 import styled from "styled-components";
 import Center from "./Center";
-import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 
-import { useContext } from "react";
-import { CartContext } from "./CartContext";
-
 const Bg = styled.div`
-    background-color: #e3e6f3;
-    color:#222;
-    padding: 50px 0;
-    height: 250px;
-`;
-const Title = styled.h1`
-    margin:0;
-    font-weight:normal;
-    font-size:3rem;
-`;
-const Desc = styled.p`
-    color:black;
-    font-size:.8rem;
-`;
-const ColumnsWrapper = styled.div`
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 40px;
-`;
-const Column = styled.div`
+    background-color: #D9D9D9;
+    color: #222;
+    padding: 50px 20px;
+    margin: 0px 20px 0px 20px;
+    height: 450px;
     display: flex;
     align-items: center;
-    .ss{
-        max-width:100%;
-        height: 200px;
-    }
 `;
+
+const Title = styled.h1`
+    font-weight: bold;
+    font-size: 2.8rem;
+    margin: 0;
+`;
+
+const Subtitle = styled.h2`
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-top: 10px;
+`;
+
+const Desc = styled.p`
+    color: #333;
+    font-size: 1rem;
+    margin-top: 10px;
+`;
+
+const ColumnsWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+`;
+
+const Column = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
 const ButtonsWrapper = styled.div`
     display: flex;
-    gap: 10px;
-    margin-top: 25px;
+    gap: 15px;
+    margin-top: 20px;
 `;
-const Ig = styled.p`
-    position: absolute;
-    margin-left: 70px;
+
+const ImageWrapper = styled.div`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 550px;
 `;
-export default function Featured({product}){
-    const {addProduct} = useContext(CartContext);
-    function addFeaturedToCart(){
-        addProduct(product?._id);
-    }
+
+const Image1 = styled.img`
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
     
-    return(
+`;
+
+const Image2 = styled.img`
+    width: 80%;
+    height: auto;
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    border-radius: 10px;
+    
+`;
+
+export default function Featured() {
+    return (
         <Bg>
             <Center>
                 <ColumnsWrapper>
                     <Column>
-                        <div>
-                            <Title>Journey Into the Past</Title>
-                            <Desc>Find Traditional Items That Tell Stories Online</Desc><br></br>
-                            {/* <ButtonsWrapper>
-                            <ButtonLink href={`/products/${product?._id}`} outline={1} white={1}>Read more</ButtonLink>
-                                <Button white onclick={addFeaturedToCart}>
-                                    <CartIcon />
-                                    Add to cart
-                                </Button>
-                            </ButtonsWrapper> */}
-                            
-                            <Ig>Shop now</Ig> 
-                            <img  src="/image/button.png"/>
-                        </div>
+                        <Title>Tap Tap Business Cards</Title>
+                        <Subtitle>Revolutionizing Networking, Tap by Tap</Subtitle>
+                        <Desc>
+                            Experience seamless connectivity redefined by Tap Tap. With cutting-edge NFC technology, 
+                            traditional business cards are a thing of the past. Elevate your networking game effortlessly.
+                        </Desc>
+                        <ButtonsWrapper>
+                            <ButtonLink href="/products" style={{ backgroundColor: "#ff7a00", color: "#fff", padding: "10px 20px", borderRadius: "5px" }}>
+                                Shop Now
+                            </ButtonLink>
+                            <ButtonLink href="/about" style={{ backgroundColor: "#ff7a00", color: "#fff", padding: "10px 20px", borderRadius: "5px" }}>
+                                Send Inquiry
+                            </ButtonLink>
+                        </ButtonsWrapper>
                     </Column>
                     <Column>
-                        <img className="ss" src="https://gyencha.s3.amazonaws.com/1685434933780.jpg"/>
+                        <ImageWrapper>
+                            <Image1 src="/image/Group_37.svg" alt="Business Card 1" />
+                            <Image2 src="/image/Card_2.png" alt="Business Card 2" />
+                        </ImageWrapper>
                     </Column>
                 </ColumnsWrapper>
             </Center>
