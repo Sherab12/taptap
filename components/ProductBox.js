@@ -3,6 +3,7 @@ import Button from "./Button";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import CartIcon from "./icons/Cart";
 
 const ProductWrapper = styled.div`
 
@@ -76,7 +77,7 @@ export default function ProductBox({_id,title,description,price,images}){
                         Nu.{price}
                     </Price>
                     <div>
-                    <Button onClick={() => addProduct(_id)} primary outline>Add to cart</Button>
+                    <Button onClick={() => addProduct(_id)} primary outline><CartIcon />Add to cart</Button>
                     </div>
                 </PriceRow>
             </ProductInfoBox>

@@ -28,7 +28,7 @@ const StyledDiv = styled.div`
 const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
-    margin-left: 20px;
+    margin-left: 30px;
 `;
 
 const StyledButtonLink = styled(ButtonLink)`

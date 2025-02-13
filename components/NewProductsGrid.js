@@ -5,10 +5,10 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const SliderContainer = styled.div`
     position: relative;
-    width: 1130px;
+    width: 1100px;
     margin: auto;
     margin-top: 40px;
-    margin-right: -5px;
+    margin-right: 20px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -21,6 +21,7 @@ const ProductsWrapper = styled.div`
     align-items: center;
     height: 520px;
     overflow: hidden;
+    padding-left: 120px;
     width: 100%;
 `;
 

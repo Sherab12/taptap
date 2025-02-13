@@ -17,8 +17,8 @@ export const ButtonStyle = css`
         margin-right: 5px;
     }
     &:hover{
-        color: red;
-        border-color: red;
+        color: #FF8A2A;
+        border-color: #FF8A2A;
         transition: 0.3s;
     }
     ${props => props.block && css`
@@ -43,10 +43,17 @@ export const ButtonStyle = css`
         color: #000;
         border: 1px solid #000;
     `}
+    
     ${props => props.primary && !props.outline && css`
-        background-color: ${primary};
-        color: #fff;
-        border: 1px solid ${primary};
+        background-color: transparent; /* No background */
+        color: ${primary}; /* Text color blue */
+        border: 2px solid ${primary}; /* Blue border */
+        transition: 0.3s;
+
+        &:hover {
+            color: #FF8A2A; /* Change text to orange */
+            border-color: #FF8A2A; /* Change border to orange */
+        }
     `}
     ${props => props.primary && props.outline && css`
         background-color: transparent;

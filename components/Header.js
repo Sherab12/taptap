@@ -177,7 +177,7 @@ export default function Header() {
                 <NavContainer>
                     <StyledNav>
                         <NavLink href={"/"} active={router.pathname === "/"}>Home</NavLink>
-                        <NavLink href={"/products"} active={router.pathname === "/products"}>Shop</NavLink>
+                        <NavLink href={"/products"} active={router.pathname === "/products" || router.pathname.startsWith("/product")}>Shop</NavLink>
                         <NavLink href={"/compatible"} active={router.pathname === "/compatible"}>Compatible Phones</NavLink>
                         <NavLink href={"/about"} active={router.pathname === "/about"}>About Tap Tap</NavLink>
                     </StyledNav>
