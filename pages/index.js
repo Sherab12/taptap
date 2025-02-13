@@ -5,7 +5,7 @@ import NewProducts from "@/components/NewProducts";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import FeaturesSection from "@/components/Setup";
-import ProductsSlider from "@/components/NewProductsGrid";
+import FAQ from "@/components/FAQ";
 
 export default function HomePage({featuredProduct, newProducts}){
   // const {data:session} = useSession();
@@ -20,6 +20,7 @@ export default function HomePage({featuredProduct, newProducts}){
       <Featured product={featuredProduct}/>
       <FeaturesSection />
       <NewProducts products={newProducts}/>
+      <FAQ />
       <Footer />
     </div>
   );

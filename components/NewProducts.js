@@ -21,7 +21,7 @@ const Title1 = styled.h2`
 
 const StyledDiv = styled.div`
     max-width: 1200px;
-    margin: 0 30px 0 30px;
+    margin: 0 30px 0 0px;
     padding: 0 20px;
 `;
 
@@ -39,7 +39,6 @@ const StyledButtonLink = styled(ButtonLink)`
     border-color: #ffff;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
-
     &:hover {
         background-color: rgb(255, 115, 0);
         transform: scale(1.05);

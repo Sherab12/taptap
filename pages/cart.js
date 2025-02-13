@@ -61,6 +61,8 @@ export default function CartPage(){
     const [streetAddress,setStreetAddress] = useState('');
     const [country,setCountry] = useState('');
     const [isSuccess,setIsSuccess] = useState(false);
+
+
     useEffect(() => {
         if(cartProducts.length > 0){
             axios.post('/api/cart', {ids:cartProducts}).then(response => {
@@ -78,7 +80,7 @@ export default function CartPage(){
             setIsSuccess(true);
             clearCart();
         }
-    }, []);
+    }, [clearCart]);
     function moreOfThisProduct(id){
         addProduct(id);
     }
@@ -137,7 +139,7 @@ export default function CartPage(){
                                 </thead>
                                 <tbody>
                                     {products.map(product => (
-                                        <tr key={products._id}>
+                                        <tr key={product._id}>
                                             <ProductInfoCell>
                                                 <ProductImageBox>
                                                     <img src={product.images[0]} alt="" />
@@ -162,6 +164,7 @@ export default function CartPage(){
                                         <td>Nu. {total}</td>
                                     </tr>
                                 </tbody>
+                                
                             </Table>
                         )}
                     </Box>

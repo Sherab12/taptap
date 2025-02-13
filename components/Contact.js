@@ -18,7 +18,9 @@ const ContactPage = () => {
                     <FaMapMarkerAlt />
                 </div>
                 <div className="text">
-                    <h3>Address &nbsp;</h3><p>Phuentsholing</p>
+                    <tt>Bongday: Paro,
+                    121008,
+                    Bhutan</tt>
                 </div>
                 </ContactBox>
                 <ContactBox>
@@ -26,8 +28,8 @@ const ContactPage = () => {
                     <FaPhone />
                 </div>
                 <div className="text">
-                    <h3>Phone &nbsp;</h3>
-                    <p>17989916</p>
+                    
+                    <tt>+97577884478 / +97517558450</tt>
                 </div>
                 </ContactBox>
                 <ContactBox>
@@ -35,8 +37,8 @@ const ContactPage = () => {
                     <EnvelopeIcon />
                 </div>
                 <div className="text">
-                    <h3>Email &nbsp;</h3>
-                    <p>sherabchoejur@gmail.com</p>
+                    
+                    <tt>taptapbtnfc@gmail.com</tt>
                 </div>
                 </ContactBox>
             </ContactInfo>
@@ -58,81 +60,6 @@ const ContactPage = () => {
                 </form>
             </ContactForm>
             </ContactContainer>
-            <Blk>
-            <div className="map">
-                <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.6804947444557!2d89.39090922533822!3d26.850112776684604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e3cb2c210e611d%3A0x44c5cb2cd32b18d4!2sCollege%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sbt!4v1681649945537!5m2!1sen!2sbt"
-                width="500px"
-                height="630px"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-            </div>
-            <div className="people">
-                <div className="peo">
-                <img src="/image/Tshering.jpg" alt="" />
-                <p>
-                    <span>Tshering Yangdon</span>
-                    <br />
-                    Senior Marketing Manager
-                    <br />
-                    Phone: #975 17386147
-                    <br />
-                    Email: tsheringyangdon@gmail.com
-                </p>
-                </div>
-                <div className="peo">
-                <img src="/image/sherab.jpg" alt="" />
-                <p>
-                    <span>Sherab Choejur Dorji</span>
-                    <br />
-                    Senior Marketing Manager
-                    <br />
-                    Phone: #975 17411756
-                    <br />
-                    Email: sherab@gmail.com
-                </p>
-                </div>
-                <div className="peo">
-                <img src="/image/phurba.jpeg" alt="" />
-                <p>
-                    <span>Phurba</span>
-                    <br />
-                    Delivery Team
-                    <br />
-                    Phone: #975 17346832
-                    <br />
-                    Email: drukpaphuba108@gmail.com
-                </p>
-                </div>
-                <div className="peo">
-                <img src="/image/DSC02099.png" alt="" />
-                <p>
-                    <span>Dorji Phuntsho</span>
-                    <br />
-                    Senior Marketing Manager
-                    <br />
-                    Phone: #975 17989916
-                    <br />
-                    Email: dorjiphuntsho1491@gmail.com
-                </p>
-                </div>
-                <div className="peo">
-                <img src="/image/pema.jpg" alt="" />
-                <p>
-                    <span>Pema Wangyel</span>
-                    <br />
-                    Junior Marketing Manager
-                    <br />
-                    Phone: #975 17517404
-                    <br />
-                    Email: Peam@gmail.com
-                </p>
-                </div>
-            </div>
-            </Blk>
         </ContactSection>
         </Main>
     );
@@ -145,21 +72,16 @@ const EnvelopeIcon = styled(FontAwesomeIcon).attrs({ icon: faEnvelope })`
 const Main= styled.div`
     max-width: 1000px;
     margin-left: 150px;
+    margin-right: 50px;
+    margin-bottom: -80px;
 `
-const Blk= styled.div`
-    display: inline-flex;
-    .map{
-        margin-top: 40px;
-        margin-right:  50px;
-    }
-    .people{
-        margin-top: 40px;
-    }
+
+const tt = styled.h3`
+    
 `
 const ContactSection = styled.section`
     position: relative;
     min-height: 100vh;
-    padding: 10px 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,7 +134,7 @@ const ContactBox = styled.div`
     .icon {
         min-width: 60px;
         height: 60px;
-        background: #ffa0a0;
+        background: #FF8A2A;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -260,7 +182,7 @@ const InputBox = styled.div`
     }
 
     input[type='submit'] {
-        background: #ffa0a0;
+        background: #FF8A2A;
         color: #ffffff;
         cursor: pointer;
         border-radius: 5px;

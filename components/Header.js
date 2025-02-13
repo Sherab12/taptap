@@ -99,9 +99,14 @@ const CartButton = styled(Link)`
     position: relative;
     display: flex;
     align-items: center;
-    color: black;
+    color: ${({ active }) => (active ? "#FF8A2A" : "black")}; /* Active state color */
     text-decoration: none;
     font-size: 20px;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #FF8A2A; /* Change color on hover */
+    }
 
     span {
         position: absolute;
@@ -114,6 +119,8 @@ const CartButton = styled(Link)`
         padding: 3px 6px;
     }
 `;
+
+
 
 const CreateAccountButton = styled(Link)`
     background-color: #FF8A2A;
@@ -175,10 +182,11 @@ export default function Header() {
                         <NavLink href={"/about"} active={router.pathname === "/about"}>About Tap Tap</NavLink>
                     </StyledNav>
                     <RightNav>
-                        <CartButton href={"/cart"}>
-                            <FiShoppingCart />
-                            {cartProducts.length > 0 && <span>{cartProducts.length}</span>}
-                        </CartButton>
+                    <CartButton href={"/cart"} active={router.pathname === "/cart"}>
+                        <FiShoppingCart />
+                        {cartProducts.length > 0 && <span>{cartProducts.length}</span>}
+                    </CartButton>
+
                         <NavLink href={"/signin"} active={router.pathname === "/signin"}>Sign in</NavLink>
                         <CreateAccountButton href={"/signin"}>Create Free Account</CreateAccountButton>
                     </RightNav>

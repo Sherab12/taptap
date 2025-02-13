@@ -1,92 +1,87 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect } from "react";
-import './icon.js'; 
-import { faFacebookF, faTwitter, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp, faInstagram, faFacebook, faTiktok } from "@fortawesome/free-brands-svg-icons";
 
 const StyledFooter = styled.footer`
-    background-color: #e3e6f3;
+    background-color: #FFD700;
     color: black;
-    margin-top: 50px;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    height: 310px;
+    padding: 30px 0;
+    margin-top: 30px;
 `;
 
 const FooterContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 `;
 
 const FooterColumn = styled.div`
     flex: 1 1 250px;
-    padding-left: 15px;
-`;
-
-const Logo = styled.img`
-    margin-bottom: 0px;
+    padding: 15px;
+    line-height: 1.5rem;
 `;
 
 const FooterLink = styled.a`
     display: block;
-    font-size: 13px;
+    font-size: 14px;
     text-decoration: none;
-    color: gray;
+    color: black;
     margin-bottom: 10px;
 `;
 
 const Footer = () => {
-    useEffect(() => {
-        import('./icon');
-    }, []);
     return (
         <StyledFooter>
-        <FooterContainer>
-            <FooterColumn>
-            <Logo src="/image/Gyencha.png" width="70px" height="70px" alt="" />
-            <h4>Contact</h4>
-            <p>
-                <strong>Address: </strong> <>CST, Rhinchending, Chhukha, Bhutan</>
-            </p>
-            <p>
-                <strong>Phone: </strong> +97517517404
-            </p>
-            <div className="follow">
-                <h4>Follow Us</h4>
-                <div className="icon">
-                    <FontAwesomeIcon icon={faFacebookF} />&nbsp;&nbsp;&nbsp;
-                    <FontAwesomeIcon icon={faTwitter} />&nbsp;&nbsp;&nbsp;
-                    <FontAwesomeIcon icon={faInstagram} />&nbsp;&nbsp;&nbsp;
-                    <FontAwesomeIcon icon={faYoutube} />&nbsp;&nbsp;&nbsp;
-                </div>
+            <FooterContainer>
+                <FooterColumn>
+                    <h4>Tap Tap</h4>
+                    <p className="">Ugyen Tshering Building,<br />Bongday, <br />Above Agriculture Machinery and Technology Center, <br />Lungyi Gewog, 12008, <br />Paro, Bhutan</p>
+                </FooterColumn>
+                <FooterColumn>
+                    <h4>Shop</h4>
+                    <FooterLink href="#">All Products</FooterLink>
+                    <FooterLink href="#">PVC Cards</FooterLink>
+                    <FooterLink href="#">Metal Cards</FooterLink>
+                    <FooterLink href="#">Bamboo/Wooden Cards</FooterLink>
+                    <FooterLink href="#">Mini Cards</FooterLink>
+                    <FooterLink href="#">Tags and Pet Tags</FooterLink>
+                    <FooterLink href="#">Key Hanger</FooterLink>
+                </FooterColumn>
+                <FooterColumn>
+                    <h4>Legal</h4>
+                    <FooterLink href="#">Terms and Conditions</FooterLink>
+                    <FooterLink href="#">Shipping Policy</FooterLink>
+                    <FooterLink href="#">Return Policy</FooterLink>
+                    <FooterLink href="#">Privacy Policy</FooterLink>
+                    <FooterLink href="#">Contact Info</FooterLink>
+                </FooterColumn>
+                <FooterColumn>
+                    <h4>Resources</h4>
+                    <FooterLink href="/">Our Other Services</FooterLink>
+                    <FooterLink href="/">Affiliate Program</FooterLink>
+                    <FooterLink href="/">FAQ</FooterLink>
+                    <FooterLink href="/">Blog</FooterLink>
+                    <FooterLink href="/">Help Center</FooterLink>
+                </FooterColumn>
+            </FooterContainer>
+            <div style={{ textAlign: "center", margin: "10px 0 0 0"}}>
+            <a href="https://wa.me/yourwhatsapp" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faWhatsapp} size="2x" style={{ margin: "0 10px", color: "black" }} />
+                </a>
+                <a href="https://instagram.com/yourinstagram" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faInstagram} size="2x" style={{ margin: "0 10px", color: "black" }} />
+                </a>
+                <a href="https://facebook.com/yourfacebook" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faFacebook} size="2x" style={{ margin: "0 10px", color: "black" }} />
+                </a>
+                <a href="https://tiktok.com/@yourtiktok" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faTiktok} size="2x" style={{ margin: "0 10px", color: "black" }} />
+                </a>
+                <p>&copy; Copyright 2025, All Rights Reserved by Tap Tap</p>
             </div>
-            </FooterColumn>
-            <FooterColumn>
-            <h4>About</h4>
-            <FooterLink href="#">About us</FooterLink>
-            <FooterLink href="#">Delivery Information</FooterLink>
-            <FooterLink href="#">Privacy Policy</FooterLink>
-            <FooterLink href="#">Terms & Conditions</FooterLink>
-            <FooterLink href="#">Contact Us</FooterLink>
-            </FooterColumn>
-            <FooterColumn className="install">
-            <h4>Install App</h4>
-            <p>From App Store or Google Play</p>
-            <div className="row">
-                <img src="/image/apple.jpg" width="100px" height="40px" alt="" />&nbsp;&nbsp;
-                <img src="/image/googleplay.jpg" width="100px" height="40px" alt="" />
-            </div>
-            <p>Secured Payment Gateway</p>
-            <img src="/image/mbob.jpg" width="70px" height="40px" alt="" />
-            </FooterColumn>
-        </FooterContainer>
-        <div style={{ textAlign: "center", color: "gray"}}>
-            <p>&copy; 2023 Gyencha. All rights reserved.</p>
-        </div>
         </StyledFooter>
     );
 };

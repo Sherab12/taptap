@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import ProductImages from "@/components/ProductImages";
 import Title from "@/components/Title";
 import WhiteBox from "@/components/WhiteBox";
-import CartIcon from "@/components/icons/cart";
+import CartIcon from "@/components/icons/Cart";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import { useContext } from "react";

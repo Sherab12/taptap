@@ -1,53 +1,123 @@
-import Head from 'next/head';
 import styled from 'styled-components';
-import Title from './Title';
+import { motion } from 'framer-motion';
 
-const StyledSection = styled.section`
-    padding: 5px 250px;
-    max-width: 80%;
+const SectionWrapper = styled.div`
+    padding: 60px 10%;
+    text-align: center;
+    margin-bottom: -200px;
+`;
+
+const MainTitle = styled.h1`
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    text-align: center;
+    line-height: 3rem;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
+`;
+
+const StyledSection = styled(motion.section)`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+
+    ${({ reverse }) => reverse && `
+        flex-direction: row-reverse;
+    `}
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        text-align: center;
+    }
+`;
+
+const TextContainer = styled.div`
+    width: 50%;
+    text-align: justify;
+
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
+`;
+
+const BoldHeading = styled.h2`
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: 24px;
+    }
+`;
+
+const Description = styled.p`
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+`;
+
+const ImageContainer = styled.div`
+    width: 50%;
+
+    @media (max-width: 1024px) {
+        width: 100%;
+    }
 `;
 
 const StyledImage = styled.img`
-    margin-top: 40px;
-    width: 50%;
-    height: 200px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 `;
 
-const StyledContent = styled.div`
-    padding-left: 10px;
-    width: 55%;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 50px;
-`;
+const AboutSection = ({ reverse, title, description, imgSrc }) => {
+    return (
+        <StyledSection
+            reverse={reverse}
+            initial={{ opacity: 0, x: reverse ? 100 : -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: reverse ? -100 : 100 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false, amount: 0.2 }}
+        >
+            <ImageContainer>
+                <StyledImage src={imgSrc} alt={title} />
+            </ImageContainer>
+            <TextContainer>
+                <BoldHeading>{title}</BoldHeading>
+                <Description>{description}</Description>
+            </TextContainer>
+        </StyledSection>
+    );
+};
 
 const About = () => {
     return (
-        <>
-            <StyledSection id="page-header" className="about-header">
-                <center><Title>Contact Us</Title></center>
-                <center><p><i>We would Love to hear from you!</i></p></center>
-            </StyledSection>
+        <SectionWrapper>
+            <MainTitle>We’re transforming the way people network—making it easier, faster, and more efficient. Just tap, share & connect!</MainTitle>
 
-            <StyledSection id="about-head" className="section-p1">
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <StyledImage src="/image/CST.jpg" alt="" />
-                <StyledContent>
-                    <center><Title>Who We Are?</Title></center> 
-                    <p style={{ textAlign: 'justify', fontFamily: 'times' }}>
-                        <i>
-                        Welcome to our website, where we specialize in selling traditional Bhutanese clothes! Our company was
-                        founded with a passion for preserving and sharing the beautiful cultural heritage of Bhutan through its
-                        clothing. Our mission is to provide customers with authentic and unique
-                        clothing options that reflect the rich history and traditions of Bhutan. We take great care in selecting
-                        each item in our collection and strive to provide excellent customer service to ensure a positive shopping
-                        experience. Thank you for choosing us as your source for traditional Bhutanese clothes!
-                        </i>
-                    </p>
-                </StyledContent>
-                </div>
-            </StyledSection>
-        </>
+            <AboutSection
+                title="Seamless Networking"
+                description="We revolutionize professional networking with versatile NFC solutions like NFC business cards, rings, key chains, stickers, tags, pet tags, and mini cards etc. Our mission is to enhance networking experiences using cutting-edge NFC technology, enabling seamless and memorable connections with a tap. We offer high-quality products and exceptional customer service to keep our clients ahead in the digital age."
+                imgSrc="/image/CST.jpg"
+                reverse={false}
+            />
+
+            <AboutSection
+                title="Why Choose Us?"
+                description="Our flagship Tap Tap Card, available in metal, wood, bamboo, and PVC, ensures stylish and efficient information sharing. Designed for NFC-enabled devices, it provides instant access to contact details, reflecting our commitment to innovation and sustainability. Serving a wide range of clients, from individuals to businesses, our products guarantee universal compatibility with both iPhones and Android devices. Beyond NFC cards, our NFC business card app allows easy management and updating of digital cards, promoting sustainability by reducing the need for paper cards. Join Tap Tap Bhutan and be part of the networking revolution with our extensive selection of Tap Tap Cards, setting new standards in professional connections in the digital age."
+                imgSrc="/image/CST.jpg"
+                reverse={true}
+            />
+        </SectionWrapper>
     );
 };
 
