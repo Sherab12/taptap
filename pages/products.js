@@ -75,6 +75,7 @@ const CategoryButton = styled.button`
     color: ${({ active }) => (active ? "#000" : "#FFF")};
     &:hover {
         background: #FEE566;
+        color: #000;
     }
 `;
 
