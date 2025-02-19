@@ -8,7 +8,6 @@ const SliderContainer = styled.div`
     width: 1100px;
     margin: auto;
     margin-top: 40px;
-    margin-right: 20px;
     overflow: hidden;
     display: flex;
     align-items: center;

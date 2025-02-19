@@ -188,7 +188,7 @@ export default function Header() {
                     </CartButton>
 
                         <NavLink href={"/signin"} active={router.pathname === "/signin"}>Sign in</NavLink>
-                        <CreateAccountButton href={"/signin"}>Create Free Account</CreateAccountButton>
+                        <CreateAccountButton href={"/signup"}>Create Free Account</CreateAccountButton>
                     </RightNav>
                 </NavContainer>
             </StyledDiv>
