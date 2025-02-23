@@ -1,17 +1,21 @@
 import styled from "styled-components";
 import ProductBox from "./ProductBox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const SliderContainer = styled.div`
     position: relative;
-    width: 1100px;
+    width: 100%;
+    max-width: 1100px;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 10px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 768px) {
+        margin-top: -10px;
+    }
 `;
 
 const ProductsWrapper = styled.div`
@@ -20,7 +24,7 @@ const ProductsWrapper = styled.div`
     align-items: center;
     height: 520px;
     overflow: hidden;
-    padding-left: 120px;
+    padding-left: 0;
     width: 100%;
 `;
 
@@ -31,16 +35,19 @@ const SliderTrack = styled.div`
 `;
 
 const ProductItem = styled.div`
-    flex: 0 0 300px; /* Fixed width */
+    flex: 0 0 ${({ productWidth }) => productWidth}px;
     transition: transform 0.5s ease, opacity 0.5s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px;
+    margin: 10px 0 0 0;
     ${({ active }) =>
         active
-            ? `transform: scale(1.2); opacity: 1; z-index: 2;`
+            ? `transform: scale(1.1); opacity: 1; z-index: 2;`
             : `transform: scale(0.9); opacity: 0.5;`}
+    @media (max-width: 768px) {
+        margin-right: -10px;
+    }
 `;
 
 const ArrowButton = styled.button`
@@ -61,18 +68,38 @@ const ArrowButton = styled.button`
 `;
 
 const LeftArrow = styled(ArrowButton)`
-    margin-right: 20px;
-    margin-bottom: 40px;
+    margin-right: 10px;
+    @media (max-width: 768px) {
+        margin-top: -150px;
+    }
+
 `;
 
 const RightArrow = styled(ArrowButton)`
-    margin-left: 20px;
-    margin-bottom: 40px;
+    margin-left: 10px;
+    @media (max-width: 768px) {
+        margin-top: -150px;
+    }
 `;
 
 export default function ProductsSlider({ products }) {
-    const productWidth = 330; // Product width + gap
-    const [activeIndex, setActiveIndex] = useState(1); // Start with the second product centered
+    const [activeIndex, setActiveIndex] = useState(1);
+    const [productWidth, setProductWidth] = useState(330); // Default width
+
+    // Adjust product width based on screen size
+    useEffect(() => {
+        const updateWidth = () => {
+            if (window.innerWidth <= 768) {
+                setProductWidth(300); // One product at a time
+            } else {
+                setProductWidth(330); // Three products at a time
+            }
+        };
+
+        updateWidth();
+        window.addEventListener("resize", updateWidth);
+        return () => window.removeEventListener("resize", updateWidth);
+    }, []);
 
     const nextSlide = () => {
         setActiveIndex((prev) => (prev + 1) % products.length);
@@ -88,7 +115,7 @@ export default function ProductsSlider({ products }) {
             <ProductsWrapper>
                 <SliderTrack translateValue={-(activeIndex * productWidth - productWidth)}>
                     {products.map((product, index) => (
-                        <ProductItem key={product._id} active={index === activeIndex}>
+                        <ProductItem key={product._id} active={index === activeIndex} productWidth={productWidth}>
                             <ProductBox {...product} />
                         </ProductItem>
                     ))}

@@ -9,9 +9,14 @@ const Section = styled.section`
 `;
 
 const Title = styled.h1`
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 10px;
+
+    @media (max-width: 600px) {
+        font-size: 1.5rem; /* Reduce font size for mobile */
+        margin-top: -30px;
+    }
 `;
 
 const Subtitle = styled.p`
@@ -20,6 +25,11 @@ const Subtitle = styled.p`
     max-width: 500px;
     margin: 0 auto 40px;
     line-height: 1.6;
+
+    @media (max-width: 600px) {
+        font-size: 1rem; /* Reduce font size for mobile */
+        max-width: 90%; /* Adjust width */
+    }
 `;
 
 const Grid = styled.div`
@@ -35,10 +45,12 @@ const Grid = styled.div`
 
     @media (max-width: 900px) {
         grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+        gap: 20px; /* Reduce gap on tablets */
     }
 
     @media (max-width: 600px) {
         grid-template-columns: 1fr; /* 1 column for mobile */
+        gap: 15px; /* Reduce gap on mobile */
     }
 `;
 
@@ -70,18 +82,19 @@ const Card = styled.div`
 
     @media (max-width: 900px) {
         &:nth-child(3)::after {
-        display: none;
+            display: none;
         }
 
         &:nth-child(even)::after {
-        display: none; /* Remove vertical lines on tablets */
+            display: none; /* Remove vertical lines on tablets */
         }
     }
 
     @media (max-width: 600px) {
         &::after {
-        display: none; /* Remove vertical lines on mobile */
+            display: none; /* Remove vertical lines on mobile */
         }
+        padding: 15px; /* Reduce padding on mobile */
     }
 `;
 
@@ -90,20 +103,35 @@ const IconWrapper = styled.div`
     padding: 15px;
     border-radius: 50%;
     margin-bottom: 15px;
+    width: 30px; /* Set a fixed size for the icon wrapper */
+    height: 30px; /* Set a fixed height for the icon wrapper */
+
+    @media (max-width: 600px) {
+        width: 30px; /* Smaller size on mobile */
+        height: 30px; /* Smaller size on mobile */
+        margin-top: -20px;
+    }
 `;
 
 const CardTitle = styled.h3`
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 10px;
+
+    @media (max-width: 600px) {
+        font-size: 1rem; /* Smaller font size on mobile */
+    }
 `;
 
 const Description = styled.p`
     font-size: 1rem;
     color: #666;
     line-height: 1.5;
-`;
 
+    @media (max-width: 600px) {
+        font-size: 0.9rem; /* Smaller font size on mobile */
+    }
+`;
 export default function FeaturesSection() {
     const features = [
         { icon: <Globe size={24} />, title: "Visit our website", desc: "Visit our website and navigate to the shop or product section to explore our offerings." },

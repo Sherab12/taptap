@@ -11,8 +11,10 @@ const Bg = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column; /* For mobile alignment */
+    margin-top: -0px;
     @media (max-width: 768px) {
         background-color: #ffff;
+        margin-top: 60px;
     }
 `;
 
@@ -78,8 +80,11 @@ const ButtonsWrapper = styled.div`
     align-items: center;
     flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
     width: 100%; /* Take full width */
-    justify-content: center; /* Horizontally center the buttons */
+    justify-content: start; /* Horizontally center the buttons */
     text-align: center; /* Ensure text inside buttons is centered */
+    @media (max-width: 768px) {
+        justify-content: center;
+    }
 `;
 
 
