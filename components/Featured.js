@@ -7,15 +7,24 @@ const Bg = styled.div`
     color: #222;
     padding: 50px 20px;
     margin: 65px 20px;
-    height: 450px;
+    height: auto; /* Adjusted for responsive height */
     display: flex;
     align-items: center;
+    flex-direction: column; /* For mobile alignment */
+    @media (max-width: 768px) {
+        background-color: #ffff;
+    }
 `;
 
 const Title = styled.h1`
     font-weight: bold;
     font-size: 2.9rem;
     margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 1.97rem; /* Smaller title on mobile */
+        margin-top: -70px;
+    }
 `;
 
 const Subtitle = styled.h2`
@@ -24,6 +33,9 @@ const Subtitle = styled.h2`
     color: #000;
     margin-top: 20px;
 
+    @media (max-width: 768px) {
+        font-size: 1.3rem; /* Adjusted subtitle size */
+    }
 `;
 
 const Desc = styled.p`
@@ -32,6 +44,9 @@ const Desc = styled.p`
     margin-top: 10px;
     line-height: 2.0;
 
+    @media (max-width: 768px) {
+        font-size: 1rem; /* Slightly smaller description */
+    }
 `;
 
 const ColumnsWrapper = styled.div`
@@ -39,6 +54,12 @@ const ColumnsWrapper = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
+    margin-top: 40px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr; /* Stack columns on mobile */
+        gap: 20px; /* Reduced gap on mobile */
+    }
 `;
 
 const Column = styled.div`
@@ -55,7 +76,12 @@ const ButtonsWrapper = styled.div`
     margin-top: 20px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
+    width: 100%; /* Take full width */
+    justify-content: center; /* Horizontally center the buttons */
+    text-align: center; /* Ensure text inside buttons is centered */
 `;
+
 
 const StyledButtonLink = styled(ButtonLink)`
     background-color: #FF8A2A;
@@ -64,10 +90,18 @@ const StyledButtonLink = styled(ButtonLink)`
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
+
     &:hover {
-        background-color:rgb(255, 115, 0);
+        background-color: rgb(255, 115, 0);
         transform: scale(1.05);
         color: #fff;
+    }
+
+    @media (max-width: 768px) {
+        padding: 8px 16px; /* Adjust button size for mobile */
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
     }
 `;
 
@@ -79,12 +113,21 @@ const ImageWrapper = styled.div`
     align-items: center;
     width: 100%;
     max-width: 1000px;
+
+    @media (max-width: 768px) {
+        justify-content: center; /* Center image on mobile */
+        margin-top: 30px; /* Adjust top margin */
+    }
 `;
 
 const Image1 = styled.img`
     width: 100%;
     height: auto;
     border-radius: 10px;
+
+    @media (max-width: 768px) {
+        width: 90%; /* Adjust image size on mobile */
+    }
 `;
 
 const Image2 = styled.img`
@@ -94,7 +137,13 @@ const Image2 = styled.img`
     top: 10px;
     right: -70px;
     border-radius: 10px;
+
+    @media (max-width: 768px) {
+        right: 0; /* Adjust positioning on mobile */
+        width: 80%; /* Adjust image size on mobile */
+    }
 `;
+
 
 export default function Featured() {
     return (

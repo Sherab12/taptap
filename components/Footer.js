@@ -68,16 +68,16 @@ const Footer = () => {
                 </FooterColumn>
             </FooterContainer>
             <div style={{ textAlign: "center", margin: "10px 0 0 0"}}>
-            <a href="https://wa.me/yourwhatsapp" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/97577448878" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faWhatsapp} size="2x" style={{ margin: "0 10px", color: "black" }} />
                 </a>
-                <a href="https://instagram.com/yourinstagram" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/taptapnfc?igsh=ZG52cTZpeDdwNjl2" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faInstagram} size="2x" style={{ margin: "0 10px", color: "black" }} />
                 </a>
-                <a href="https://facebook.com/yourfacebook" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/share/19RdkbpBUR/" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faFacebook} size="2x" style={{ margin: "0 10px", color: "black" }} />
                 </a>
-                <a href="https://tiktok.com/@yourtiktok" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@taptapbtn?_t=ZS-8u4mbAic3E8&_r=1" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faTiktok} size="2x" style={{ margin: "0 10px", color: "black" }} />
                 </a>
                 <p>&copy; Copyright 2025, All Rights Reserved by Tap Tap</p>

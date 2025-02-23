@@ -156,15 +156,15 @@ export default function Login() {
             <LoginButton>Log In</LoginButton>
             <Divider>
                 <Line />
-                <span style={{ margin: "0 10px" }}>or sign in with</span>
+                <span style={{ margin: "0 10px" }}>Or Sign in with</span>
                 <Line />
             </Divider>
             <SocialContainer>
                 <SocialButton>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" width="20" height="20" /> Google
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/640px-Google_%22G%22_logo.svg.png" alt="Google" width="20" height="20" /> &nbsp;&nbsp;Google
                 </SocialButton>
                 <SocialButton>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" width="20" height="20" /> Facebook
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" width="20" height="20" /> &nbsp;&nbsp;Facebook
                 </SocialButton>
             </SocialContainer>
             <SignupText>
