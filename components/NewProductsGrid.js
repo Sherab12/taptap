@@ -46,7 +46,7 @@ const ProductItem = styled.div`
             ? `transform: scale(1.1); opacity: 1; z-index: 2;`
             : `transform: scale(0.9); opacity: 0.5;`}
     @media (max-width: 768px) {
-        margin-right: -10px;
+        margin-right: -7px;
     }
 `;
 
@@ -84,7 +84,7 @@ const RightArrow = styled(ArrowButton)`
 
 export default function ProductsSlider({ products }) {
     const [activeIndex, setActiveIndex] = useState(1);
-    const [productWidth, setProductWidth] = useState(330); // Default width
+    const [productWidth, setProductWidth] = useState(300); // Default width
 
     // Adjust product width based on screen size
     useEffect(() => {

@@ -28,6 +28,7 @@ const Title1 = styled.h2`
 
     @media (max-width: 768px) {
         font-size: 1.6rem;
+        margin-top: -10px;
     }
 
     @media (max-width: 480px) {
@@ -54,8 +55,12 @@ const ButtonContainer = styled.div`
     justify-content: center;
     margin-left: 30px;
 
+    @media (max-width: 768px) {
+        margin-top: -100px;
+    }
+
     @media (max-width: 480px) {
-        margin-left: 0;
+        margin-top: 80px;
     }
 `;
 
@@ -78,6 +83,7 @@ const StyledButtonLink = styled(ButtonLink)`
     @media (max-width: 768px) {
         padding: 8px 18px;
         font-size: 0.9rem;
+        
     }
 
     @media (max-width: 480px) {
